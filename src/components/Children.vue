@@ -56,7 +56,8 @@
                 router.push({name: 'Children'})
             }
             else if(n.Thread === 'Yes' && n.Wives ==='Yes'){
-
+                // eslint-disable-next-line no-console
+                console.log('')
             }
             else{
                 // eslint-disable-next-line no-console
