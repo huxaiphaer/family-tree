@@ -30,6 +30,18 @@
 
             </v-row>
         </v-container>
+        <v-snackbar
+                v-model="snackbar"
+        >
+            No Thread Yet.
+            <v-btn
+                    color="pink"
+                    text
+                    @click="snackbar = false"
+            >
+                Close
+            </v-btn>
+        </v-snackbar>
     </div>
 </template>
 
