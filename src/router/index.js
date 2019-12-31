@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Parents from "../components/FirstPhase";
-import Children from "../components/Children";
+import Children from "../components/FirstPhaseChildren";
 
 Vue.use(VueRouter)
 

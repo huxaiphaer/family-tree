@@ -1,22 +1,22 @@
 <!--suppress BadExpressionStatementJS -->
 <template>
-    <div>
-        <v-container fill-height>
+    <div class="ma-1">
+        <v-container  >
+            <v-spacer/>
             <v-row>
                 <v-col cols="12">
                     <v-row
                             :align="center"
                             :justify="center"
-                            class="grey lighten-5 mx-10 my-10"
+                            class="grey lighten-5"
                             style="height: 300px;"
                     >
+
                         <v-card
                                 v-for="(n, i) in allData"
                                 :key="n"
-                                class="ma-1"
-                                outlined
-                                tile
-                                elevation="30"
+                                max-width="500"
+                                style="margin: 10px;"
                                 v-on:click="navigateToNextPage($event, i, n)"
                         >
                             <v-img
@@ -27,8 +27,8 @@
                         </v-card>
                     </v-row>
                 </v-col>
-
             </v-row>
+            <v-spacer/>
         </v-container>
         <v-snackbar
                 v-model="snackbar"
@@ -79,5 +79,10 @@
     }
 </script>
 
+
 <style scoped>
+
+    .space{
+        margin: 20px;
+    }
 </style>
