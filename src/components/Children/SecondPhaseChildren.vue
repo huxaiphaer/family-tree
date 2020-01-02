@@ -1,5 +1,7 @@
 <template>
-    
+    <div>
+        <h1>Second Phase Children</h1>
+    </div>
 </template>
 
 <script>

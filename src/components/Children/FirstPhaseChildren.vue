@@ -58,21 +58,25 @@
         },
         mounted() {
             // eslint-disable-next-line no-console
-            this.$rtdbBind('allData', db.ref('/Wives/'+this.number + '/Children'))
+            let path = '/Wives/'+this.number + '/Children';
+
+            this.$rtdbBind('allData', db.ref(''+path))
         },
         methods:{
             navigateToNextPage(ev, i, n){
 
-                if(n.Thread ===' Yes' && n.c === 'Yes'){
+                if(n.c.toString().trim() === 'Yes'){
                     router.push({name: 'SecondPhaseChildren'})
                 }
-                else if(n.Thread === 'Yes' && n.w ==='Yes'){
+                else if(n.w.toString().trim() ==='Yes'){
                     // eslint-disable-next-line no-console
-                    console.log('')
+                    let compute = i + 1;
+                    let eachPersonNumber = '00' + compute;
+                    router.push({name:'SecondPhaseWives', params:{name: n.Name, photo:'', number: eachPersonNumber}})
                 }
                 else{
                     // eslint-disable-next-line no-console
-                    this.$noty.success("Sorry, this person has no thread yet.")
+                    this.$noty.error("Sorry, this person has no thread yet.")
                 }
             },
         }

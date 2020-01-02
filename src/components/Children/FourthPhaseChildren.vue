@@ -47,7 +47,7 @@
     import router from "../../router";
 
     export default {
-        name: "ThirdPhaseChildren",
+        name: "FourthPhaseChildren",
         props: ['name', 'path', 'number'],
         data() {
             return {
@@ -56,7 +56,7 @@
         },
         mounted() {
 
-            let path = '/Wives/001/Children/005/wives/'+this.number+'/Children/';
+            let path = 'Wives/001/Children/005/wives/001/Children/003/wives/'+this.number+'/Children';
 
             // eslint-disable-next-line no-console
             console.log('-->' + this.number)

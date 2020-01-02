@@ -1,5 +1,4 @@
 <template>
-
     <div>
         <v-container align="center">
             <v-card
@@ -62,7 +61,6 @@
             allData: familyRoot
         },
         methods: {
-
             routeToNextPage: function (ev, i, n) {
                 if (n.Thread === 'Yes') {
                     let numberForEachPerson = i + 1;

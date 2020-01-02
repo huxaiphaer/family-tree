@@ -49,7 +49,7 @@
     import router from "../../router";
 
     export default {
-        name: "SecondPhaseWives",
+        name: "FourthPhaseWives",
         props:['name','photo','number'],
         data (){
             return {
@@ -58,14 +58,14 @@
         },
         mounted() {
             // eslint-disable-next-line no-console
-            this.$rtdbBind('allData', db.ref('/Wives/001/Children/'+ this.number+'/wives/'))
+            this.$rtdbBind('allData', db.ref('/Wives/001/Children/005/wives/001/Children/'+this.number+ '/wives'))
         },
         methods:{
             navigateToNextPage(ev, i, n){
 
                 if(n.c.toString().trim() === 'Yes'){
 
-                     router.push({name: 'ThirdPhaseChildren', params:{name:n.Name, photo:'', number: i}})
+                    router.push({name: 'FourthPhaseChildren', params:{name:n.Name, photo:'', number: i}})
                 }
                 else if(n.w.toString().trim() ==='Yes'){
                     // eslint-disable-next-line no-console
