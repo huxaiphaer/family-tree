@@ -26,16 +26,6 @@ export default {
     allData: familyRoot
   }
   ,
-  mounted() {
-    // eslint-disable-next-line no-console
-    console.log('--->' + this.allData)
-  }
-  ,
-  beforeMount() {
-    // eslint-disable-next-line no-console
-    console.log('--->' + this.allData)
-
-  }
 
 };
 </script>
