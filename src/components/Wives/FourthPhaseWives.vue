@@ -59,6 +59,9 @@
         mounted() {
             // eslint-disable-next-line no-console
             this.$rtdbBind('allData', db.ref('/Wives/001/Children/005/wives/001/Children/'+this.number+ '/wives'))
+
+            //Musa Muganga Scenario
+            //  /Wives/001/Children/005/wives/002/Children/003/wives
         },
         methods:{
             navigateToNextPage(ev, i, n){

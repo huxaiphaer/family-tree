@@ -59,8 +59,14 @@
             let path = '/Wives/001/Children/005/wives/'+this.number+'/Children/';
 
             // eslint-disable-next-line no-console
-            console.log('-->' + this.number)
+
             this.$rtdbBind('allData', db.ref(''+path))
+
+
+            let p = db.ref(path).ref
+            // eslint-disable-next-line no-console
+            console.log('--> * ' + db.ref(path).ref.toString())
+            alert(p)
         },
         methods:{
             navigateToNextPage(ev, i, n){
@@ -68,13 +74,14 @@
                 if(n.c.toString().trim() === 'Yes'){
                     let compute = i + 1;
                     let eachPersonNumber = '00' + compute;
-                    router.push({name: 'SecondPhaseChildren', params:{name: n.Name, photo:'', number: eachPersonNumber}})
+                    router.push({name: 'SecondPhaseChildren', params:{name: n.Name, photo:'', path: db.ref('').ref.toString(), number: eachPersonNumber}})
                 }
                 else if(n.w.toString().trim() ==='Yes'){
                     // eslint-disable-next-line no-console
-                    let compute = i + 1;
-                    let eachPersonNumber = '00' + compute;
-                    router.push({name:'FourthPhaseWives', params:{name: n.Name, photo:'', number: eachPersonNumber}})
+                    // let compute = i + 1;
+                    // let eachPersonNumber = '00' + compute;
+                    // router.push({name:'FourthPhaseWives', params:{name: n.Name, photo:'', number: eachPersonNumber}})
+
                 }
                 else{
                     // eslint-disable-next-line no-console

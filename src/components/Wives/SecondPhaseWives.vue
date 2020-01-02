@@ -35,7 +35,7 @@
                                     height="250"
                                     src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                             ></v-img>
-                            <v-card-title> <b>{{n.Name}}</b></v-card-title>
+                            <v-card-title><b>{{n.Name}}</b></v-card-title>
                         </v-card>
                     </v-row>
                 </v-col>
@@ -50,30 +50,27 @@
 
     export default {
         name: "SecondPhaseWives",
-        props:['name','photo','number'],
-        data (){
+        props: ['name', 'photo', 'number', 'path'],
+        data() {
             return {
-                allData:{},
+                allData: {},
             }
         },
         mounted() {
-            // eslint-disable-next-line no-console
-            this.$rtdbBind('allData', db.ref('/Wives/001/Children/'+ this.number+'/wives/'))
+            this.$rtdbBind('allData', db.ref(this.path))
         },
-        methods:{
-            navigateToNextPage(ev, i, n){
+        methods: {
+            navigateToNextPage(ev, i, n) {
 
-                if(n.c.toString().trim() === 'Yes'){
+                if (n.c.toString().trim() === 'Yes') {
 
-                     router.push({name: 'ThirdPhaseChildren', params:{name:n.Name, photo:'', number: i}})
-                }
-                else if(n.w.toString().trim() ==='Yes'){
+                    router.push({name: 'ThirdPhaseChildren', params: {name: n.Name, photo: '', number: i}})
+                } else if (n.w.toString().trim() === 'Yes') {
                     // eslint-disable-next-line no-console
-                    let compute = i +1;
+                    let compute = i + 1;
                     let eachPersonNumber = '00' + compute;
-                    router.push({name:'ThirdPhaseWives', params:{name: n.Name, photo:'', number: eachPersonNumber}})
-                }
-                else{
+                    router.push({name: 'ThirdPhaseWives', params: {name: n.Name, photo: '', number: eachPersonNumber}})
+                } else {
                     // eslint-disable-next-line no-console
                     this.$noty.error("Sorry, this person has no thread yet.")
                 }

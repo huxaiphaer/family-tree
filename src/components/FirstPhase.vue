@@ -17,7 +17,7 @@
             <v-row>
                 <v-col cols="12">
                     <v-row
-                             :align="center"
+                            :align="center"
                             :justify="center"
                             class="grey lighten-5 mx-10 my-10"
                             style="height: 300px;"
@@ -67,23 +67,15 @@
                     let idForEachPerson = '00' + numberForEachPerson;
                     router.push({
                         name: 'Children',
-                        params: {name: n.Name, number: idForEachPerson}
+                        params: {
+                            name: n.Name,
+                            number: idForEachPerson,
+                            path : familyRoot.ref.toString()
+                        }
                     })
                 }
             }
         },
-        mounted() {
-
-            // eslint-disable-next-line no-console
-            console.log('hey')
-            var i;
-
-            for(i = 0; i< this.allData.length; i++){
-
-                // eslint-disable-next-line no-console
-                console.log('--->  ' + this.allData[i].Name)
-            }
-        }
     }
 </script>
 
