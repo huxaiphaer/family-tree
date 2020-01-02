@@ -48,6 +48,8 @@
     import {db} from "../../firebase/db";
     import router from "../../router";
 
+    let export_path = ''
+
     export default {
         name: "SecondPhaseWives",
         props: ['name', 'photo', 'number', 'path'],
@@ -58,18 +60,35 @@
         },
         mounted() {
             this.$rtdbBind('allData', db.ref(this.path))
+
+            export_path = this.path
         },
         methods: {
             navigateToNextPage(ev, i, n) {
 
+                let formatPath = db.ref(export_path).ref.toString().substr(41)
+
                 if (n.c.toString().trim() === 'Yes') {
 
-                    router.push({name: 'ThirdPhaseChildren', params: {name: n.Name, photo: '', number: i}})
+                    router.push({
+                        name: 'ThirdPhaseChildren', params:
+                            {
+                                name: n.Name,
+                                photo: '',
+                                number: i,
+                                path: formatPath + '/'+ i+ '/Children',
+                            }
+                    })
                 } else if (n.w.toString().trim() === 'Yes') {
-                    // eslint-disable-next-line no-console
+
                     let compute = i + 1;
                     let eachPersonNumber = '00' + compute;
-                    router.push({name: 'ThirdPhaseWives', params: {name: n.Name, photo: '', number: eachPersonNumber}})
+                    router.push({name: 'ThirdPhaseWives', params:
+                            {   name: n.Name,
+                                photo: '',
+                                number: eachPersonNumber,
+                                path:formatPath + '/' + eachPersonNumber + '/wives',
+                            }})
                 } else {
                     // eslint-disable-next-line no-console
                     this.$noty.error("Sorry, this person has no thread yet.")

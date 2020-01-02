@@ -1,5 +1,5 @@
 <template>
-    <v-container  fill-height>
+    <v-container fill-height>
         <v-spacer/>
         <v-row>
             <v-col cols="12">
@@ -21,7 +21,7 @@
                                 height="250"
                                 src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                         ></v-img>
-                        <v-card-title> <b>{{n.Name}}</b> </v-card-title>
+                        <v-card-title><b>{{n.Name}}</b></v-card-title>
                     </v-card>
                 </v-row>
             </v-col>
@@ -46,6 +46,8 @@
     import {db} from "../../firebase/db";
     import router from "../../router";
 
+    let export_path = ''
+
     export default {
         name: "ThirdPhaseChildren",
         props: ['name', 'path', 'number'],
@@ -56,34 +58,41 @@
         },
         mounted() {
 
-            let path = '/Wives/001/Children/005/wives/'+this.number+'/Children/';
+            this.$rtdbBind('allData', db.ref(this.path))
+            export_path = this.path;
 
-            // eslint-disable-next-line no-console
-
-            this.$rtdbBind('allData', db.ref(''+path))
-
-
-            let p = db.ref(path).ref
-            // eslint-disable-next-line no-console
-            console.log('--> * ' + db.ref(path).ref.toString())
-            alert(p)
         },
-        methods:{
-            navigateToNextPage(ev, i, n){
+        methods: {
+            navigateToNextPage(ev, i, n) {
 
-                if(n.c.toString().trim() === 'Yes'){
+                let formatPath = db.ref(export_path).ref.toString().substr(41)
+
+                if (n.c.toString().trim() === 'Yes') {
                     let compute = i + 1;
                     let eachPersonNumber = '00' + compute;
-                    router.push({name: 'SecondPhaseChildren', params:{name: n.Name, photo:'', path: db.ref('').ref.toString(), number: eachPersonNumber}})
-                }
-                else if(n.w.toString().trim() ==='Yes'){
-                    // eslint-disable-next-line no-console
-                    // let compute = i + 1;
-                    // let eachPersonNumber = '00' + compute;
-                    // router.push({name:'FourthPhaseWives', params:{name: n.Name, photo:'', number: eachPersonNumber}})
+                    router.push({
+                        name: 'ForthPhaseChildren', params:
+                            {
+                                name: n.Name,
+                                photo: '',
+                                path: formatPath + '/' + eachPersonNumber + '/Children',
+                                number: eachPersonNumber
+                            }
+                    })
+                } else if (n.w.toString().trim() === 'Yes') {
 
-                }
-                else{
+                    let compute = i + 1;
+                    let eachPersonNumber = '00' + compute;
+                    router.push({
+                        name: 'FourthPhaseWives', params: {
+                            name: n.Name,
+                            photo: '',
+                            number: eachPersonNumber,
+                            path: formatPath + '/' + eachPersonNumber + '/wives'
+                        }
+                    })
+
+                } else {
                     // eslint-disable-next-line no-console
                     this.$noty.error("Sorry, this person has no thread yet.")
                 }

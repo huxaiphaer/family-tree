@@ -35,7 +35,7 @@
                                     height="250"
                                     src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                             ></v-img>
-                            <v-card-title> <b>{{n.Name}}</b></v-card-title>
+                            <v-card-title><b>{{n.Name}}</b></v-card-title>
                         </v-card>
                     </v-row>
                 </v-col>
@@ -48,35 +48,49 @@
     import {db} from "../../firebase/db";
     import router from "../../router";
 
+    let export_path = ''
+
     export default {
         name: "FourthPhaseWives",
-        props:['name','photo','number'],
-        data (){
+        props: ['name', 'photo', 'number','path'],
+        data() {
             return {
-                allData:{},
+                allData: {},
             }
         },
         mounted() {
             // eslint-disable-next-line no-console
-            this.$rtdbBind('allData', db.ref('/Wives/001/Children/005/wives/001/Children/'+this.number+ '/wives'))
+            this.$rtdbBind('allData', db.ref(this.path))
+            export_path = this.path
 
-            //Musa Muganga Scenario
-            //  /Wives/001/Children/005/wives/002/Children/003/wives
         },
-        methods:{
-            navigateToNextPage(ev, i, n){
+        methods: {
+            navigateToNextPage(ev, i, n) {
+                let formatPath = db.ref(export_path).ref.toString().substr(41)
+                if (n.c.toString().trim() === 'Yes') {
 
-                if(n.c.toString().trim() === 'Yes'){
+                    router.push({
+                        name: 'FifthPhaseChildren', params:
+                            {
+                                name: n.Name,
+                                photo: '',
+                                number: i,
+                                path: formatPath + '/' + i + '/Children',
+                            }
+                    })
 
-                    router.push({name: 'FourthPhaseChildren', params:{name:n.Name, photo:'', number: i}})
-                }
-                else if(n.w.toString().trim() ==='Yes'){
+                } else if (n.w.toString().trim() === 'Yes') {
                     // eslint-disable-next-line no-console
-                    let compute = i +1;
+                    let compute = i + 1;
                     let eachPersonNumber = '00' + compute;
-                    router.push({name:'ThirdPhaseWives', params:{name: n.Name, photo:'', number: eachPersonNumber}})
-                }
-                else{
+                    router.push({
+                        name: 'FifthPhaseWives', params: {
+                            name: n.Name,
+                            photo: '',
+                            number: formatPath + '/' + eachPersonNumber + '/wives'
+                        }
+                    })
+                } else {
                     // eslint-disable-next-line no-console
                     this.$noty.error("Sorry, this person has no thread yet.")
                 }

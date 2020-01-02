@@ -7,9 +7,7 @@ import SecondPhaseWives from "../components/Wives/SecondPhaseWives";
 import ThirdPhaseChildren from "../components/Children/ThirdPhaseChildren";
 import FourthPhaseWives from "../components/Wives/FourthPhaseWives";
 import FourthPhaseChildren from "../components/Children/FourthPhaseChildren";
-// import component from "vuetify/lib/util/component";
-// import props from "vuetify/lib/components/VCalendar/util/props";
-// import SecondPhaseChildren from "../components/Children/SecondPhaseChildren";
+import FifthPhaseChildren from "../components/Children/FifthPhaseChildren";
 
 Vue.use(VueRouter)
 
@@ -45,12 +43,6 @@ const routes = [
     component: SecondPhaseWives,
     props:true,
   },
-  // {
-  //   path:'/SecondLayerChildren',
-  //   name: 'SecondPhaseChildren',
-  //   component: SecondPhaseChildren,
-  //   props:true,
-  // },
   {
     path:'/ThirdLayerChildren',
     name:'ThirdPhaseChildren',
@@ -68,6 +60,12 @@ const routes = [
     name:'FourthPhaseChildren',
     component: FourthPhaseChildren,
     props:true,
+  },
+  {
+    path: '/FifthLayerChildren',
+    name:'FifthPhaseChildren',
+    component: FifthPhaseChildren,
+    props: true,
   }
 ]
 
