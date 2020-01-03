@@ -67,19 +67,21 @@
     import router from "../../router";
 
     let export_path = ''
+    let husbandName = ''
 
     export default {
         name: "FourthPhaseWives",
-        props: ['name', 'photo', 'number', 'path'],
+        props: ['name', 'photo', 'number', 'path','husbandName','wifeName'],
         data() {
             return {
                 allData: {},
             }
         },
         mounted() {
-            // eslint-disable-next-line no-console
             this.$rtdbBind('allData', db.ref(this.path))
+
             export_path = this.path
+            husbandName = this.name
 
         },
         methods: {
@@ -93,6 +95,8 @@
                                 name: n.Name,
                                 photo: 'null',
                                 path: formatPath + '/' + i + '/Children',
+                                husbandName: husbandName,
+                                wifeName: n.Name,
                             }
                     })
 
@@ -104,7 +108,7 @@
                         name: 'FifthPhaseWives', params: {
                             name: n.Name,
                             photo: 'null',
-                            number: formatPath + '/' + eachPersonNumber + '/wives'
+                            path: formatPath + '/' + eachPersonNumber + '/wives'
                         }
                     })
                 } else {

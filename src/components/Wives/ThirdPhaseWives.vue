@@ -66,9 +66,12 @@
     import {db} from "../../firebase/db";
     import router from "../../router";
 
+    let export_path = ''
+    let husbandName = '';
+
     export default {
         name: "ThirdPhaseWives",
-        props: ['name', 'photo', 'number'],
+        props: ['name', 'photo', 'number','path', 'husbandName', 'wifeName'],
         data() {
             return {
                 allData: {},
@@ -76,11 +79,14 @@
         },
         mounted() {
             // eslint-disable-next-line no-console
-            this.$rtdbBind('allData', db.ref('/Wives/001/Children/005/wives/001/Children/' + this.number + '/wives'))
+            this.$rtdbBind('allData', db.ref(this.path))
+
+            export_path = this.path
+            husbandName = this.husbandsName
         },
         methods: {
             navigateToNextPage(ev, i, n) {
-
+                let formatPath = db.ref(export_path).ref.toString().substr(41)
                 if (n.c.toString().trim() === 'Yes') {
 
                     router.push({
@@ -88,7 +94,10 @@
                             {
                                 name: n.Name,
                                 photo: 'null',
-                                number: i
+                                number: i,
+                                path: formatPath + '/' + i + '/Children',
+                                wifeName:n.Name,
+                                husbandName:husbandName
                             }
                     })
                 } else if (n.w.toString().trim() === 'Yes') {
@@ -100,7 +109,7 @@
                             {
                                 name: n.Name,
                                 photo: 'null',
-                                number: eachPersonNumber
+                                path: formatPath + '/' + eachPersonNumber + '/wives'
                             }
                     })
                 } else {

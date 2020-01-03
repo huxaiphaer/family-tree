@@ -1,44 +1,36 @@
 <template>
     <v-container fill-height>
         <v-spacer/>
-        <v-row>
-            <v-col cols="12">
-                <v-row
-                        :align="center"
-                        :justify="center"
-                        class="grey lighten-5"
-                        style="height: 300px;"
-                >
-
-                    <v-card
-                            :key="n"
-                            max-width="500"
-                            style="margin: 10px;"
-                            v-for="(n, i) in allData"
-                            v-on:click="navigateToNextPage($event, i, n)"
+        <center>
+            <h1> <span class="husbandText">{{husbandName}}</span>  <span class="uppersand">&</span> <span class="wifeText">{{wifeName}}</span>  <span class="childrenText">Children</span></h1>
+            <v-row>
+                <v-col cols="12">
+                    <v-row
+                            :align="center"
+                            :justify="center"
+                            class="grey lighten-5"
+                            style="height: 300px;"
                     >
-                        <v-img
-                                height="250"
-                                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-                        ></v-img>
-                        <v-card-title><b>{{n.Name}}</b></v-card-title>
-                    </v-card>
-                </v-row>
-            </v-col>
-        </v-row>
+
+                        <v-card
+                                v-for="(n, i) in allData"
+                                :key="n"
+                                max-width="500"
+                                style="margin: 10px;"
+                                v-on:click="navigateToNextPage($event, i, n)"
+                        >
+                            <v-img
+                                    height="250"
+                                    src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                            ></v-img>
+                            <v-card-title><b>{{n.Name}}</b></v-card-title>
+                        </v-card>
+                    </v-row>
+                </v-col>
+            </v-row>
+        </center>
+
         <v-spacer/>
-        <v-snackbar
-                v-model="snackbar"
-        >
-            No Thread Yet.
-            <v-btn
-                    @click="snackbar = false"
-                    color="pink"
-                    text
-            >
-                Close
-            </v-btn>
-        </v-snackbar>
     </v-container>
 </template>
 
@@ -48,9 +40,10 @@
 
     let export_path = ''
 
+
     export default {
         name: "FifthPhaseChildren",
-        props: ['name', 'path', 'number'],
+        props: ['name', 'path', 'number','husbandName','wifeName'],
         data() {
             return {
                 allData: [],
@@ -75,6 +68,7 @@
                                 name: n.Name,
                                 photo: '',
                                 number: formatPath + '/' + eachPersonNumber + '/Children',
+
                             }
                     })
                 } else if (n.w.toString().trim() === 'Yes') {
@@ -100,5 +94,21 @@
 </script>
 
 <style scoped>
+    .space {
+        margin: 20px;
+    }
+    .childrenText{
+        color: purple;
+    }
+    .wifeText{
+        color: crimson;
+    }
 
+    .husbandText{
+        color: blueviolet;
+    }
+
+    .uppersand{
+        color: chocolate;
+    }
 </style>

@@ -67,6 +67,7 @@
     import router from "../../router";
 
     let export_path = ''
+    let husbandsName = ''
 
     export default {
         name: "SecondPhaseWives",
@@ -80,6 +81,7 @@
             this.$rtdbBind('allData', db.ref(this.path))
 
             export_path = this.path
+            husbandsName = this.name
         },
         methods: {
             navigateToNextPage(ev, i, n) {
@@ -94,6 +96,8 @@
                                 name: n.Name,
                                 photo: 'null',
                                 path: formatPath + '/' + i + '/Children',
+                                wifeName:n.Name,
+                                husbandName:husbandsName
                             }
                     })
                 } else if (n.w.toString().trim() === 'Yes') {

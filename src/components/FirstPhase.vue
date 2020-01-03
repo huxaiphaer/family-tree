@@ -88,7 +88,9 @@
                             name: n.Name,
                             number: idForEachPerson,
                             photo:'hey',
-                            path : familyRoot.ref.toString()
+                            path : familyRoot.ref.toString(),
+                            husbandName:'Iddi Gonyodde',
+                            wifeName:n.Name,
                         }
                     }).catch(err=>{
                         // eslint-disable-next-line no-console
