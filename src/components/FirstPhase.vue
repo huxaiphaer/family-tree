@@ -9,7 +9,9 @@
                 >
                     <v-img
                             height="250"
-                            src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                            width="500"
+                            contain="true"
+                            src="https://firebasestorage.googleapis.com/v0/b/family-tree-ngonge.appspot.com/o/Idd%20Gonyodde%2Fuser-placeholder.jpg?alt=media&token=efd3e96e-0494-4049-8b19-030978397b4e"
                     ></v-img>
                     <v-card-title><i> <b>Iddi Ganyodde</b></i>  </v-card-title>
                 </v-card>
@@ -48,7 +50,9 @@
                             >
                                 <v-img
                                         height="250"
-                                        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                                        width="500"
+                                        contain="true"
+                                       :src="n.photo"
                                 ></v-img>
                                 <v-card-title> <b>{{n.Name}}</b></v-card-title>
                             </v-card>

@@ -3,6 +3,7 @@
         <v-app-bar
                 color="red darken-1"
                 light
+                fixed-header="true"
         >
 
             <v-toolbar-title > Family Tree</v-toolbar-title>

@@ -22,7 +22,9 @@
                         >
                             <v-img
                                     height="250"
-                                    src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                                    contain="true"
+                                    width="500"
+                                    :src="n.photo"
                             ></v-img>
                             <v-card-title><b>{{n.Name}}</b></v-card-title>
                         </v-card>
@@ -30,7 +32,6 @@
                 </v-col>
             </v-row>
         </center>
-
         <v-spacer/>
     </v-container>
 </template>
