@@ -73,8 +73,7 @@
                         name: 'FifthPhaseChildren', params:
                             {
                                 name: n.Name,
-                                photo: '',
-                                number: i,
+                                photo: 'null',
                                 path: formatPath + '/' + i + '/Children',
                             }
                     })
@@ -86,7 +85,7 @@
                     router.push({
                         name: 'FifthPhaseWives', params: {
                             name: n.Name,
-                            photo: '',
+                            photo: 'null',
                             number: formatPath + '/' + eachPersonNumber + '/wives'
                         }
                     })

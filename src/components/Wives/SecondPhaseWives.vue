@@ -74,8 +74,7 @@
                         name: 'ThirdPhaseChildren', params:
                             {
                                 name: n.Name,
-                                photo: '',
-                                number: i,
+                                photo: 'null',
                                 path: formatPath + '/'+ i+ '/Children',
                             }
                     })
@@ -85,8 +84,7 @@
                     let eachPersonNumber = '00' + compute;
                     router.push({name: 'ThirdPhaseWives', params:
                             {   name: n.Name,
-                                photo: '',
-                                number: eachPersonNumber,
+                                photo: 'null',
                                 path:formatPath + '/' + eachPersonNumber + '/wives',
                             }})
                 } else {

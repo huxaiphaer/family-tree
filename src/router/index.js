@@ -26,7 +26,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path:'/children',
+    path:'/children/:name/:number/:photo/:path',
     name:'Children',
     component: Children,
     props: true
@@ -38,31 +38,31 @@ const routes = [
     props:true,
   },
   {
-    path:'/SecondLayerWives',
+    path:'/SecondLayerWives/:name/:photo/:path',
     name:'SecondPhaseWives',
     component: SecondPhaseWives,
     props:true,
   },
   {
-    path:'/ThirdLayerChildren',
+    path:'/ThirdLayerChildren/:name/:photo/:path',
     name:'ThirdPhaseChildren',
     component: ThirdPhaseChildren,
     props:true,
   },
   {
-    path:'/FourthLayerWives',
+    path:'/FourthLayerWives/:name/:photo/:path',
     name:'FourthPhaseWives',
     component: FourthPhaseWives,
     props:true,
   },
   {
-    path:'/FourthLayerChildren',
+    path:'/FourthLayerChildren/:name/:photo/:path',
     name:'FourthPhaseChildren',
     component: FourthPhaseChildren,
     props:true,
   },
   {
-    path: '/FifthLayerChildren',
+    path: '/FifthLayerChildren/:name/:photo/:path',
     name:'FifthPhaseChildren',
     component: FifthPhaseChildren,
     props: true,

@@ -64,13 +64,23 @@
                 if(n.c.toString().trim() === 'Yes'){
                     let compute = i + 1;
                     let eachPersonNumber = '00' + compute;
-                    router.push({name: 'SecondPhaseChildren', params:{name: n.Name, photo:'', number: eachPersonNumber}})
+                    router.push({name: 'SecondPhaseChildren', params:
+                            {
+                                name: n.Name,
+                                photo:'null',
+                                number: eachPersonNumber
+                            }})
                 }
                 else if(n.w.toString().trim() ==='Yes'){
                     // eslint-disable-next-line no-console
                     let compute = i + 1;
                     let eachPersonNumber = '00' + compute;
-                    router.push({name:'FourthPhaseWives', params:{name: n.Name, photo:'', number: eachPersonNumber}})
+                    router.push({name:'FourthPhaseWives',
+                        params:{
+                            name: n.Name,
+                            photo:'null',
+                            number: eachPersonNumber}
+                    })
                 }
                 else{
                     // eslint-disable-next-line no-console

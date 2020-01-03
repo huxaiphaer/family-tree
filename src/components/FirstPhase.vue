@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1>1</h1>
         <v-container align="center">
             <v-card
                     class="mx-auto my-12"
@@ -70,8 +71,12 @@
                         params: {
                             name: n.Name,
                             number: idForEachPerson,
+                            photo:'hey',
                             path : familyRoot.ref.toString()
                         }
+                    }).catch(err=>{
+                        // eslint-disable-next-line no-console
+                        console.log(err)
                     })
                 }
             }

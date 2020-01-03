@@ -74,9 +74,8 @@
                         name: 'ForthPhaseChildren', params:
                             {
                                 name: n.Name,
-                                photo: '',
+                                photo: 'null',
                                 path: formatPath + '/' + eachPersonNumber + '/Children',
-                                number: eachPersonNumber
                             }
                     })
                 } else if (n.w.toString().trim() === 'Yes') {
@@ -86,8 +85,7 @@
                     router.push({
                         name: 'FourthPhaseWives', params: {
                             name: n.Name,
-                            photo: '',
-                            number: eachPersonNumber,
+                            photo: 'null',
                             path: formatPath + '/' + eachPersonNumber + '/wives'
                         }
                     })

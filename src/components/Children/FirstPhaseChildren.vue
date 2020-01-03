@@ -72,19 +72,19 @@
                 if (n.c.toString().trim() === 'Yes') {
                     router.push({
                         name: 'SecondPhaseChildren', params: {
-                            path: db.ref(export_path).ref.toString()
+                            name: n.Name,
+                            path: db.ref(export_path).ref.toString(),
+                            photo:'null',
                         }
                     })
                 } else if (n.w.toString().trim() === 'Yes') {
-                    // eslint-disable-next-line no-console
                     let compute = i + 1;
                     let eachPersonNumber = '00' + compute;
                     let formatPath = db.ref(export_path).ref.toString().substr(41)
                     router.push({
                         name: 'SecondPhaseWives', params: {
                             name: n.Name,
-                            photo: '',
-                            number: eachPersonNumber,
+                            photo: 'null',
                             path: formatPath + '/' + eachPersonNumber + '/wives/'
                         }
                     })

@@ -2,9 +2,9 @@
     <div>
         <v-container align="center">
             <v-card
+                    align="center"
                     class="mx-auto my-12"
                     max-width="374"
-                    align="center"
             >
                 <v-img
                         height="250"
@@ -13,7 +13,7 @@
                 <v-card-title>{{name}}</v-card-title>
             </v-card>
         </v-container>
-        <v-container fill-height align="center">
+        <v-container align="center" fill-height>
             <v-row>
                 <v-col cols="12">
                     <v-row
@@ -23,19 +23,19 @@
                             style="height: 300px;"
                     >
                         <v-card
-                                v-for="(n , i) in allData"
                                 :key="n"
+                                elevation="30"
                                 outlined
                                 style="margin: 10px; align-items: center"
                                 tile
-                                elevation="30"
+                                v-for="(n , i) in allData"
                                 v-on:click="navigateToNextPage($event,i, n)"
                         >
                             <v-img
                                     height="250"
                                     src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                             ></v-img>
-                            <v-card-title> <b>{{n.Name}}</b></v-card-title>
+                            <v-card-title><b>{{n.Name}}</b></v-card-title>
                         </v-card>
                     </v-row>
                 </v-col>
@@ -50,30 +50,42 @@
 
     export default {
         name: "ThirdPhaseWives",
-        props:['name','photo','number'],
-        data (){
+        props: ['name', 'photo', 'number'],
+        data() {
             return {
-                allData:{},
+                allData: {},
             }
         },
         mounted() {
             // eslint-disable-next-line no-console
-            this.$rtdbBind('allData', db.ref('/Wives/001/Children/005/wives/001/Children/'+this.number+'/wives'))
+            this.$rtdbBind('allData', db.ref('/Wives/001/Children/005/wives/001/Children/' + this.number + '/wives'))
         },
-        methods:{
-            navigateToNextPage(ev, i, n){
+        methods: {
+            navigateToNextPage(ev, i, n) {
 
-                if(n.c.toString().trim() === 'Yes'){
+                if (n.c.toString().trim() === 'Yes') {
 
-                    router.push({name: 'ThirdPhaseChildren', params:{name:n.Name, photo:'', number: i}})
-                }
-                else if(n.w.toString().trim() ==='Yes'){
+                    router.push({
+                        name: 'ThirdPhaseChildren', params:
+                            {
+                                name: n.Name,
+                                photo: 'null',
+                                number: i
+                            }
+                    })
+                } else if (n.w.toString().trim() === 'Yes') {
                     // eslint-disable-next-line no-console
-                    let compute = i +1;
+                    let compute = i + 1;
                     let eachPersonNumber = '00' + compute;
-                    router.push({name:'ThirdPhaseWives', params:{name: n.Name, photo:'', number: eachPersonNumber}})
-                }
-                else{
+                    router.push({
+                        name: 'ThirdPhaseWives', params:
+                            {
+                                name: n.Name,
+                                photo: 'null',
+                                number: eachPersonNumber
+                            }
+                    })
+                } else {
                     // eslint-disable-next-line no-console
                     this.$noty.error("Sorry, this person has no thread yet.")
                 }
