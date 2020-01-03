@@ -1,46 +1,64 @@
 <template>
     <div>
-        <v-container align="center">
-            <v-card
-                    class="mx-auto my-12"
-                    max-width="374"
-                    align="center"
-            >
-                <v-img
-                        height="250"
-                        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-                ></v-img>
-                <v-card-title>{{name}}</v-card-title>
-            </v-card>
-        </v-container>
-        <v-container fill-height align="center">
-            <v-row>
-                <v-col cols="12">
-                    <v-row
-                            :align="center"
-                            :justify="center"
-                            class="grey lighten-5 mx-10 my-10"
-                            style="height: 300px;"
+        <div>
+            <center>
+                <v-container align="center">
+                    <v-card
+                            align="center"
+                            class="mx-auto my-12"
+                            max-width="374"
                     >
-                        <v-card
-                                v-for="(n , i) in allData"
-                                :key="n"
-                                outlined
-                                style="margin: 10px; align-items: center"
-                                tile
-                                elevation="30"
-                                v-on:click="navigateToNextPage($event,i, n)"
-                        >
-                            <v-img
-                                    height="250"
-                                    src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-                            ></v-img>
-                            <v-card-title><b>{{n.Name}}</b></v-card-title>
-                        </v-card>
+                        <v-img
+                                height="250"
+                                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                        ></v-img>
+                        <v-card-title><i> <b>{{name}}</b></i></v-card-title>
+                    </v-card>
+                </v-container>
+            </center>
+            <center>
+                <v-img
+                        height="50"
+                        src="../../assets/arrow.png"
+                        width="50"
+                />
+            </center>
+
+            <center>
+                <v-text-field/>
+                <h2 style="color: purple">WIFE/WIVES</h2>
+            </center>
+            <center>
+                <v-container align="center" fill-height>
+                    <v-row>
+                        <v-col cols="12">
+                            <v-row
+                                    :align="center"
+                                    :justify="center"
+                                    class="grey lighten-5 mx-10 my-10"
+                                    style="height: 300px;"
+                            >
+                                <v-card
+                                        :key="n"
+                                        elevation="30"
+                                        outlined
+                                        style="margin: 10px; align-items: center"
+                                        tile
+                                        v-for="(n , i) in allData"
+                                        v-on:click="navigateToNextPage($event,i, n)"
+                                >
+                                    <v-img
+                                            height="250"
+                                            src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                                    ></v-img>
+                                    <v-card-title><b>{{n.Name}}</b></v-card-title>
+                                </v-card>
+                            </v-row>
+                        </v-col>
                     </v-row>
-                </v-col>
-            </v-row>
-        </v-container>
+                </v-container>
+            </center>
+        </div>
     </div>
 </template>
 
@@ -75,18 +93,21 @@
                             {
                                 name: n.Name,
                                 photo: 'null',
-                                path: formatPath + '/'+ i+ '/Children',
+                                path: formatPath + '/' + i + '/Children',
                             }
                     })
                 } else if (n.w.toString().trim() === 'Yes') {
 
                     let compute = i + 1;
                     let eachPersonNumber = '00' + compute;
-                    router.push({name: 'ThirdPhaseWives', params:
-                            {   name: n.Name,
+                    router.push({
+                        name: 'ThirdPhaseWives', params:
+                            {
+                                name: n.Name,
                                 photo: 'null',
-                                path:formatPath + '/' + eachPersonNumber + '/wives',
-                            }})
+                                path: formatPath + '/' + eachPersonNumber + '/wives',
+                            }
+                    })
                 } else {
                     // eslint-disable-next-line no-console
                     this.$noty.error("Sorry, this person has no thread yet.")
